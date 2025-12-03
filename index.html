@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gastos de Barcos</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1e5f7a" />
+  <!-- Chart.js desde CDN (ligero y offline-capable si ya se cargó antes) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🌊 Gastos de Barcos</h1>
+  </header>
+
+  <main>
+    <section id="boat-selector">
+      <label for="boat">Selecciona un barco:</label>
+      <select id="boat">
+        <option value="Punta Martiño">Punta Martiño</option>
+        <option value="Praia Canelas">Praia Canelas</option>
+        <option value="Thamira">Thamira</option>
+      </select>
+    </section>
+
+    <section id="expense-form">
+      <h2>Agregar gasto</h2>
+      <form id="form">
+        <input type="text" id="description" placeholder="Descripción" required />
+        <input type="number" id="amount" placeholder="Monto" step="0.01" required />
+        <select id="category" required>
+          <option value="">— Categoría —</option>
+          <option value="Combustible">Combustible</option>
+          <option value="Mantenimiento">Mantenimiento</option>
+          <option value="Amarre">Amarre</option>
+          <option value="Provisiones">Provisiones</option>
+          <option value="Otros">Otros</option>
+        </select>
+        <input type="date" id="date" required />
+        <button type="submit">Añadir</button>
+      </form>
+    </section>
+
+    <section id="chart-container">
+      <h2>📊 Distribución por categorías</h2>
+      <canvas id="expenseChart" height="200"></canvas>
+    </section>
+
+    <section id="expenses-list">
+      <h2>Gastos registrados</h2>
+      <div id="list"></div>
+    </section>
+
+    <section id="actions">
+      <button id="export">📤 Exportar</button>
+      <button id="import">📥 Importar</button>
+      <input type="file" id="import-file" accept=".json" style="display:none" />
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
